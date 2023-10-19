@@ -1,42 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+@section('main')
 
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<body>
-
-
-    <nav class="navbar navbar-expand-sm bg-dark">
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="/">Products</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light" href="#">Link</a>
-            </li>
-        </ul>
-    </nav>
 
     <div class="container">
         <div>
@@ -49,7 +14,7 @@
                     <th>Sno.</th>
                     <th>Name</th>
                     <th>Images</th>
-                    <th>description</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,13 +23,21 @@
                     <td>{{ $loop->index+1 }}</td>
                     <td>{{  $product->name}}</td>
                     <td>
-                        <img src="products/{{ $product->image }}" alt="" width="50" height="50" class="rounded-circle"/>
+                        <img src="products/{{ $product->image }}" alt="" width="30" height="30" class="rounded-circle"/>
+                    </td>
+                    <td> 
+                        <a href="products/{{ $product->id}}/edit" class="btn btn-success btn-sm">Edit</a>
+
+                        <form method="POST" class="d-inline" action="/products/{{ $product->id }}/delete">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</body>
 
-</html>
+@endsection
