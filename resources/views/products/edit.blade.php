@@ -2,10 +2,10 @@
 
 @section('main')
     <div class="container">
-        <h1 class="p-1">Update Product</h1>
-        <div class="row justify-center ">
+        <div class="row justify-content-center ">
             <div class="col-sm-8">
                 <div class="card mt-3 p-3 shadow-lg">
+                    <h1 class="">Update Product</h1>
                     <h3 class="text-muted">Product ID #{{ $product->name }}</h3>
                     <form action="/products/{{ $product->id }}/update" method="POST" enctype="multipart/form-data">
                         @csrf

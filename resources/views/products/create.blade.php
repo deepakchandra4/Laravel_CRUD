@@ -3,11 +3,12 @@
 @section('main')
 
    <div class="container">
-    <h1 class="p-1">Add Product</h1>
-    <div class="row justify-center ">
+    
+    <div class="row justify-content-center ">
         <div class="col-sm-8">
                 <div class="card mt-3 p-3 shadow-lg">
             <form action="/products/store" method="POST" enctype="multipart/form-data">
+                <h1 class="p-1">Add Product</h1>
                 @csrf
                 <div class="form-group">
                     <label for="">Name</label>
